@@ -1,7 +1,7 @@
 'use strict';
 
 const { render } = require('mustache');
-const { isString, isPlainObject } = require('./utils');
+const { isString, isPlainObject, isFunction } = require('./utils');
 
 const checkForTemplates = (arg) => {
     if (isString(arg)) {
@@ -23,6 +23,9 @@ const renderTemplate = (arg, context) => {
         if (isString(argValue)) {
             arg.value = render(argValue, context);
         }
+    }
+    if (isFunction(arg)) {
+        return arg(context);
     }
     return arg;
 };

@@ -16,7 +16,15 @@ const {
     diff,
 } = require('./utils');
 
-const encrypt = arg => Encrypt.encrypt(value(arg));
+const encrypt = (arg) => {
+    const rawValue = value(arg);
+    const deferred = (context = {}) => {
+        const result = renderTemplate(rawValue, context);
+        return Encrypt.encrypt(result);
+    }
+
+    return checkForTemplates(rawValue) ? deferred : deferred();
+};
 
 const NORMALIZER_MAP = {
     default: identity,
@@ -52,7 +60,7 @@ class RPC {
             return normalizer(arg);
         });
 
-        const isTemplated = normalizedArgs.some(checkForTemplates);
+        const isTemplated = normalizedArgs.some(arg => (checkForTemplates(arg) || typeof arg === 'function'));
         const raw = !isTemplated ? Format.buildRpcString(name, normalizedArgs) : null;
 
         return new RPC({
