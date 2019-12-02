@@ -1,0 +1,53 @@
+{
+    "vista": {
+        "host": "localhost",
+        "port": 9430
+    },
+    "context": {
+        "PATIENT_IEN": 25
+    },
+    "rpcs": [
+        { "name": "TCPConnect", "args": ["localhost", 0, "localhost"] },
+        { "name": "XUS SIGNON SETUP", "args": ["\"!|X|v|ZX|[ZvXivXv&E|[i'E''[[E|ZEJ[v&iZ&&|XJJX*"] },
+        { "name": "XUS INTRO MSG", "args": [] },
+
+        {
+            "name": "XUS AV CODE",
+            "args": [{ "type": "ENCRYPT", "value": "FAKEDOC1;!@#$1DOC" }],
+            "context": [{ "name": "USER_IEN", "index": 0 }]
+        },
+
+        { "name": "XUS GET USER INFO", "args": [] },
+        { "name": "XWB GET BROKER INFO", "args": [] },
+        { "name": "XUS DIVISION GET", "args": [] },
+        { "name": "XWB CREATE CONTEXT", "args": ["$!"] },
+        { "name": "XWB CREATE CONTEXT", "args": ["28!* f!=*Bku* <\\!~-"] },
+        { "name": "XWB CREATE CONTEXT", "args": ["+RD{=Py{Dxq~R&~("] },
+        { "name": "XWB CREATE CONTEXT", "args": [" Xw+(]wB+qF{+(?sw=#"] },
+        { "name": "ORWU USERINFO", "args": [] },
+
+        { "name": "ORWPT SELECT", "args": ["{{PATIENT_IEN}}"] },
+        { "name": "ORWU DT", "args": ["NOW"] },
+
+        { "name": "ORQQVI VITALS", "args": ["{{PATIENT_IEN}}"] },
+
+        { "name": "GMV V/M ALLDATA", "args": ["{{PATIENT_IEN}}^3170807^3180207.235955^0"] },
+        { "name": "GMV LATEST VM", "args": ["{{PATIENT_IEN}}"] },
+        { "name": "GMV CLOSEST READING", "args": ["{{PATIENT_IEN}}", "88790923.044919", "HT", "0"] },
+        { "name": "GMV CLOSEST READING", "args": ["{{PATIENT_IEN}}","88790923.044919", "WT", "0"] },
+        { "name": "GMV EXTRACT REC", "args": ["{{PATIENT_IEN}}^3180207^^3180207"] },
+
+        { "name": "GMV ADD VM", "args": ["3180207.200921^{{PATIENT_IEN}}^1;120/90^10^{{USER_IEN}}*51:109"] },
+        { "name": "GMV ADD VM", "args": ["3180207.200921^{{PATIENT_IEN}}^2;98.6^10^{{USER_IEN}}*"] },
+        { "name": "GMV ADD VM", "args": ["3180207.200921^{{PATIENT_IEN}}^5;89^10^{{USER_IEN}}*97:63"] },
+        { "name": "GMV ADD VM", "args": ["3180207.200921^{{PATIENT_IEN}}^8;64^10^{{USER_IEN}}*"] },
+        { "name": "GMV ADD VM", "args": ["3180207.200921^{{PATIENT_IEN}}^9;175^10^{{USER_IEN}}*42"] },
+
+        { "name": "ORQQVI VITALS", "args": ["{{PATIENT_IEN}}"] },
+        { "name": "GMV V/M ALLDATA", "args": ["{{PATIENT_IEN}}^3170807^3180207.235955^0"] },
+        { "name": "GMV LATEST VM", "args": ["{{PATIENT_IEN}}"] },
+        { "name": "GMV CLOSEST READING", "args": ["{{PATIENT_IEN}}","88790923.044919","HT","0"] },
+        { "name": "GMV EXTRACT REC", "args": ["{{PATIENT_IEN}}^3180207^^3180207"] },
+        { "name": "#BYE#", "args": [] }
+    ]
+}

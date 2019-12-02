@@ -1,0 +1,22 @@
+{
+    "vista": {
+        "host": "localhost",
+        "port": 9430
+    },
+    "context": {
+        "SSN": "123456789"
+    },
+    "rpcs": [
+        { "name": "TCPConnect", "args": ["localhost", 0, "localhost"] },
+        { "name": "XUS SIGNON SETUP", "args": ["-31^DVBA_^{{SSN}}^MAN,MILLION^VAM^200^123456789^No phone"] },
+        { "name": "XUS GET USER INFO", "args": [] },
+        { "name": "XWB CREATE CONTEXT", "args": [{ "type": "ENCRYPT", "value": "DVBA CAPRI GUI" }] },
+        {
+            "name": "XWB GET VARIABLE VALUE",
+            "args": [{ "type": "REFERENCE", "value": "$O(^VA(200,\"SSN\",\"{{SSN}}\",0))"}],
+            "context": [{ "name": "USER_IEN" }]
+        },
+        { "name": "XWB IM HERE", "args": [], "repeat": 4 },
+        { "name": "#BYE#", "args": [] }
+    ]
+}
